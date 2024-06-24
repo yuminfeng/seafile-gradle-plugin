@@ -7,7 +7,7 @@ seafile{
     repo '6d9b5843-53f5-4222-a065-9ae01baff2e5'
     debugDir '/app/Release/android'
     releaseDir '/app/Release/android'
-    dependsOn 'resguard'
+    dependsOn 'assemble'
 }
 
 def getVersionFolder() {
