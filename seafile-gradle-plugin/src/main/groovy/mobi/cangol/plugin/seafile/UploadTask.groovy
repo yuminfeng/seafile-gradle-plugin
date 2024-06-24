@@ -22,8 +22,8 @@ class UploadTask extends DefaultTask {
         String apkPath = apkOutput.outputFile.getAbsolutePath()
         log.warn("apkPath ===> " + apkPath)
 
-        if (extension.token==null) {
-            extension.token=client.getToken();
+        if (extension.token == null) {
+            extension.token = client.getToken();
             log.warn("getToken ===> " + extension.token)
         }
 
@@ -33,9 +33,9 @@ class UploadTask extends DefaultTask {
         }
         log.warn("destDirPath ===> " + destDirPath)
 
-        def fileDir = destDirPath.substring(destDirPath.lastIndexOf("/")+1)
+        def fileDir = destDirPath.substring(destDirPath.lastIndexOf("/") + 1)
         log.warn("fileDir ===> " + fileDir)
-        if(fileDir.startsWith("V")){
+        if (fileDir.startsWith("V")) {
             def result = client.createDir(destDirPath)
             log.warn("createDir ===> " + result)
         }

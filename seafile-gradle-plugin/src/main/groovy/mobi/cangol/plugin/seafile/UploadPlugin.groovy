@@ -20,7 +20,7 @@ class UploadPlugin implements Plugin<Project> {
                 log.error("Please config your seafile(server,token|username+password,repo) in your build.gradle.")
                 return
             }
-            if (seaExtension.token==null&&(seaExtension.username==null&&seaExtension.password==null)) {
+            if (seaExtension.token == null && (seaExtension.username == null && seaExtension.password == null)) {
                 log.error("Please config your seafile(token|username+password) in your build.gradle.")
                 return
             }

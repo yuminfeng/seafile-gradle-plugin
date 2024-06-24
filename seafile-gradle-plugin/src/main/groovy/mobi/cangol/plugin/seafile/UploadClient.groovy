@@ -99,6 +99,7 @@ class UploadClient {
         }
         return null
     }
+
     String getUploadLink(String destDir) {
         HttpClient httpClient = getUnSafeHttpClient()
         HttpGet httpGet = new HttpGet(extension.getServer() + "/api2/repos/" + extension.getRepo() + "/upload-link/?p=" + destDir)
@@ -124,6 +125,7 @@ class UploadClient {
         }
         return null
     }
+
     String getToken() {
         HttpClient httpClient = getUnSafeHttpClient()
         HttpPost httpPost = new HttpPost(extension.getServer() + "/api2/auth-token/")
@@ -139,9 +141,9 @@ class UploadClient {
                 String result = null
                 if (response.getEntity() != null) {
                     result = EntityUtils.toString(new BufferedHttpEntity(response.getEntity()), "UTF-8")
-                    Object obj= JSONValue.parse(result);
-                    JSONObject jsonObject=(JSONObject)obj;
-                    result = (String)jsonObject.get("token")
+                    Object obj = JSONValue.parse(result);
+                    JSONObject jsonObject = (JSONObject) obj;
+                    result = (String) jsonObject.get("token")
                 }
                 log.info("getToken result=" + result)
                 return result
@@ -158,7 +160,7 @@ class UploadClient {
 
     HttpClient getUnSafeHttpClient() {
         SSLContext sslContext = null
-        TrustManager[] trustManagers = [new UnSafeTrustManager()] as  TrustManager[]
+        TrustManager[] trustManagers = [new UnSafeTrustManager()] as TrustManager[]
         try {
             sslContext = SSLContext.getInstance("TLS")
             sslContext.init(null, trustManagers, new SecureRandom())
@@ -219,7 +221,7 @@ class UploadClient {
 
         @Override
         X509Certificate[] getAcceptedIssuers() {
-            X509Certificate[] _AcceptedIssuers = [  new X509Certificate(){
+            X509Certificate[] _AcceptedIssuers = [new X509Certificate() {
                 @Override
                 void checkValidity() throws CertificateExpiredException, CertificateNotYetValidException {
 
@@ -349,7 +351,7 @@ class UploadClient {
                 byte[] getExtensionValue(String oid) {
                     return new byte[0]
                 }
-            } ] as X509Certificate[]
+            }] as X509Certificate[]
             return _AcceptedIssuers
         }
     }
